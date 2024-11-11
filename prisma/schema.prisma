@@ -1,0 +1,54 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        Int      @id @default(autoincrement())
+  email     String   @unique
+  password  String
+  createdAt DateTime @default(now())
+}
+
+model cihuibiao {
+  id  Int    @id @default(autoincrement())
+  ch  String @unique
+  en  String
+  lvl Int    @default(0)
+
+  @@map("词汇表")
+}
+
+model hanzibiao {
+  id    Int    @id @default(autoincrement())
+  hanzi String @unique
+
+  @@map("汉字表")
+}
+
+model Enword {
+  id       Int     @id @default(autoincrement())
+  word     String  @unique
+  examples Enexp[]
+
+  @@map("enword")
+}
+
+model Enexp {
+  id      Int    @id @default(autoincrement())
+  keyWord String
+  exp     String
+  enword  Enword @relation(fields: [keyWord], references: [word], onDelete: Cascade)
+
+  @@map("enexp")
+}
