@@ -3,9 +3,9 @@
   "version": "1.0.0",
   "main": "dist/app.js",
   "scripts": {
+    "build": "npx tsc && cp -R src/views dist/views",
     "start": "node dist/app.js",
-    "serve": "ts-node src/app.ts",
-    "build": "tsc && cp -R src/views dist/views"
+    "serve": "ts-node src/app.ts"
   },
   "keywords": [],
   "author": "",
