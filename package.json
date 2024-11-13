@@ -7,6 +7,9 @@
     "start": "node dist/app.js",
     "serve": "ts-node src/app.ts"
   },
+  "prisma": {
+    "seed": "ts-node prisma/seed.ts"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
