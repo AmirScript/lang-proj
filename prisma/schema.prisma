@@ -9,7 +9,7 @@ generator client {
 }
 
 datasource db {
-  provider = "mysql"
+  provider = "postgresql"
   url      = env("DATABASE_URL")
 }
 
@@ -46,9 +46,9 @@ model Enword {
 
 model Enexp {
   id      Int    @id @default(autoincrement())
-  keyWord String
+  wordkey String
   exp     String
-  enword  Enword @relation(fields: [keyWord], references: [word], onDelete: Cascade)
+  enword  Enword @relation(fields: [wordkey], references: [word], onDelete: Cascade)
 
   @@map("enexp")
 }
