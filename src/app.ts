@@ -37,7 +37,7 @@ app.use('/api/auth', authRoutes);
 app.use('/api/ch', chRoutes);
 app.use('/api/en', enRoutes);
 
-app.get('*', (req, res)=> {
+app.get('*', (req: Request, res: Response)=> {
   res.sendFile(path.join(__dirname, 'views', 'index.html'));
 });
 
